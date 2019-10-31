@@ -8,4 +8,4 @@
     @else
         <a href="/login" class="nav-link">Login</a>
     @endif
-</ul>
+</ul> 
