@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{$team->name}}</title>
-</head>
-<body>
-        <ul>
+@extends('layouts.master')
+
+@section('title')
+
+@section('content')
+        <ul class="list-unstyled">
             <h3>{{$team->name}}</h3>
             <p>email: {{$team->email}}</p>
             <p>Address: {{$team->address}}</p>
@@ -19,5 +15,4 @@
                 </li>
             @endforeach
         </ul>
-</body>
-</html>
+@endsection
