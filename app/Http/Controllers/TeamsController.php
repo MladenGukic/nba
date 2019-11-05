@@ -22,7 +22,7 @@ class TeamsController extends Controller
 
     public function show(Request $request, $id) 
     {
-        $team = Team::find($id);
+        $team = Team::with('comments')->findOrFail($id);
         $players  = $team->players;
         return view('teams.show', compact('team', 'players'));
     }

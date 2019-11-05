@@ -12,7 +12,7 @@
 */
 
 Route::get('/','TeamsController@index');
-Route::get('/teams/{id}', 'TeamsController@show');
+Route::get('/teams/{id}', 'TeamsController@show')->name('teams.show');
 
 Route::get('/players/{id}', 'PlayersController@show');
 
@@ -22,5 +22,7 @@ Route::post('/register', 'RegisterController@store');
 Route::get('/login', 'LoginController@create')->name('login.create');
 Route::post('/login', 'LoginController@store');
 Route::get('/logout', 'LoginController@destroy');
+
+Route::post('/teams/{teamId}/comments', 'CommentsController@store');
 
 
