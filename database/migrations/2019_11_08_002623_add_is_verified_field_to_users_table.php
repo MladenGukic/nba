@@ -15,7 +15,7 @@ class AddIsVerifiedFieldToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
 
-           $table->boolean('is_verified')->default(false);
+           $table->boolean('is_verified')->default(true);
 
         });
     }

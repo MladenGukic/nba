@@ -30,6 +30,7 @@ class RegisterController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
+        $user->is_verified = false;
 
         $user->save();
 
