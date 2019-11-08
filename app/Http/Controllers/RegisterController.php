@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\RegisterRequest;
 
+use Illuminate\Support\Facades\Mail;
+
+use App\Mail\UserVerification;
+
 use App\User;
 
 class RegisterController extends Controller
@@ -28,6 +32,8 @@ class RegisterController extends Controller
         $user->password = bcrypt($request->input('password'));
 
         $user->save();
+
+        Mail::to($request->email)->send(new UserVerification($user));
 
         return redirect('/'); 
     }

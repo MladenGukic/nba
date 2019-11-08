@@ -25,4 +25,7 @@ Route::get('/logout', 'LoginController@destroy');
 
 Route::post('/teams/{teamId}/comments', 'CommentsController@store');
 
+Route::get('/verification/{id}', ['as' => 'verification', 'uses' => 'LoginController@verification']);
+
+
 

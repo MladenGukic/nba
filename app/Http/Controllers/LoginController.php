@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
+
 class LoginController extends Controller
 {
     public function __construct() {
@@ -21,9 +23,32 @@ class LoginController extends Controller
             return back()->withErrors([
                 'message' => 'Bad credentails. Try again please!'
             ]);
-        }
+        } else {
+            
+            if(auth()->user()->is_verified) {
 
-        return redirect('/');
+                return redirect('/');
+
+            } else {
+
+                $this->destroy();
+
+                return back()->withErrors(['message' => 'You are not verified, please check your email for verification!']);
+
+            }
+
+        }
+    }
+
+    public function verification($id)
+    {
+        $user = User::find($id);
+
+        $user->is_verified = true;
+
+        $user->save();
+
+        return view('login.verification', compact('user'));
     }
 
     public function destroy()
